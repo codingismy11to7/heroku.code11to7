@@ -22,9 +22,11 @@ object Application extends Controller {
         }
     }
 
+    lazy val googClientId = sys.env getOrElse ("GOOGLE_CLIENT_ID", sys.error("GOOGLE_CLIENT_ID not set"))
+
     def index = Action.async {
         mongoDb.collectionNames map (cn ⇒ {
-            Ok(views.html.index(s"ReactiveMongo collections: $cn"))
+            Ok(views.html.index(s"ReactiveMongo collections: $cn", googClientId))
         })
     }
 
