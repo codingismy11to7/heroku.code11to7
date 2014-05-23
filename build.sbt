@@ -3,7 +3,10 @@ name := "heroku_code11to7"
 version := "1.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
-  jdbc,
+    "org.reactivemongo" %% "reactivemongo" % "0.10.0"
+)
+
+libraryDependencies ++= Seq(
   anorm,
   cache
 )     
