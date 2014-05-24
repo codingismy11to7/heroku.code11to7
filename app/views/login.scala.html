@@ -1,0 +1,30 @@
+@(clientId: String, csrfToken: String)
+
+@import play.api.libs.json.Json
+
+@main("Login") {
+
+    <div>
+        <span id="signinButton">
+            <span
+            class="g-signin"
+            data-clientid="@clientId"
+            data-callback="signInCallback"
+            data-redirecturi="postmessage"
+            data-accesstype="offline"
+            data-cookiepolicy="single_host_origin"
+            data-scope="profile">
+            </span>
+        </span>
+    </div>
+
+    <script type="text/javascript">
+        require(['util/login', 'util/logger'], function (login, logger) {
+            //login.bootstrapGoogle();
+            logger.info("hi");
+            window.signInCallback = login.callback;
+            @*JavaScript("login.bootstrapGoogle('" + csrfToken + "');")*@
+            login.bootstrapGoogle(@Html(Json.toJson(csrfToken).toString()));
+        })
+    </script>
+}

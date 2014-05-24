@@ -1,19 +1,7 @@
-@(message: String, clientId: String)
+@(message: String)
 
 @main("Welcome to Play") {
 
     <h1>Hi</h1>
     <h3>@message</h3>
-
-    <div>
-        <span id="signinButton">
-            <span
-            class="g-signin"
-            data-callback="signinCallback"
-            data-clientid="@clientId"
-            data-cookiepolicy="single_host_origin"
-            data-scope="profile">
-            </span>
-        </span>
-    </div>
 }
